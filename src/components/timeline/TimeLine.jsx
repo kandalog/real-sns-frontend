@@ -3,13 +3,16 @@ import { Post } from "../post/Post";
 import { Share } from "../share/Share";
 
 import "./TimeLine.css";
+import { Posts } from "../../dammyData";
 
 export const TimeLine = () => {
   return (
     <div className="timeline">
       <div className="timelineWrapper">
         <Share />
-        <Post />
+        {Posts.map((post) => (
+          <Post post={post} key={post.id} />
+        ))}
       </div>
     </div>
   );

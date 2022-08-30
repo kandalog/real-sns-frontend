@@ -1,36 +1,56 @@
 import { MoreVert } from "@mui/icons-material";
-import React from "react";
+import React, { useState } from "react";
 
 import "./Post.css";
+import { Users } from "../../dammyData";
 
-export const Post = () => {
+export const Post = ({ post }) => {
+  const [like, setLike] = useState(post.like);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLike = () => {
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
+
   return (
     <div className="post">
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
             <img
-              src="/assets/person/1.jpeg"
+              src={
+                Users.filter((user) => user.id === post.id)[0].profilePicture
+              }
               alt=""
               className="postProfileImg"
             />
-            <span className="postUsername">Tee</span>
-            <span className="postDate">5分前</span>
+            <span className="postUsername">
+              {Users.filter((user) => user.id === post.id)[0].username}
+            </span>
+            <span className="postDate">{post.date}</span>
           </div>
           <div className="postTopRight">
             <MoreVert />
           </div>
         </div>
         <div className="postCenter">
-          <span className="postText">SNSを自作中です。</span>
-          <img src="/assets/post/1.jpeg" alt="" className="postImg" />
+          <span className="postText">{post.desc}</span>
+          <img src={post.photo} alt="" className="postImg" />
           <div className="postBottom">
             <div className="postBottomLeft">
-              <img src="/assets/heart.png" alt="" className="likeIcon" />
-              <span className="postLikeCounter">5人がいいねを押しました</span>
+              <img
+                src="/assets/heart.png"
+                alt=""
+                className="likeIcon"
+                onClick={() => handleLike()}
+              />
+              <span className="postLikeCounter">
+                {like}人がいいねを押しました
+              </span>
             </div>
             <div className="postBottomRight">
-              <span className="postCommentText">4:コメント</span>
+              <span className="postCommentText">{post.comment}:コメント</span>
             </div>
           </div>
         </div>
