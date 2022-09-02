@@ -5,7 +5,7 @@ import { Users } from "../../dammyData";
 
 import "./Rightbar.css";
 
-export const Rightbar = ({ profile }) => {
+export const Rightbar = ({ user }) => {
   const HomeRightbar = () => {
     return (
       <>
@@ -15,7 +15,7 @@ export const Rightbar = ({ profile }) => {
             <b>フォロワー限定</b>イベント開催中!
           </span>
         </div>
-        <img src="/assets/ad.jpeg" alt="" className="eventImg" />
+        <img src="/assets/event.jpeg" alt="" className="eventImg" />
         <h4 className="rightbarTitle">オンラインの友達</h4>
         <ul className="rightbarFriendList">
           {Users.map((user) => (
@@ -107,7 +107,7 @@ export const Rightbar = ({ profile }) => {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {profile ? <ProfileRightbar /> : <HomeRightbar />}
+        {user ? <ProfileRightbar /> : <HomeRightbar />}
       </div>
     </div>
   );

@@ -4,11 +4,17 @@ import React from "react";
 import "./Shara.css";
 
 export const Share = () => {
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLICK_FOLDER;
+
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img src="/assets/person/1.jpeg" alt="" className="shareProfileImg" />
+          <img
+            src={PUBLIC_FOLDER + "/person/noAvatar.png"}
+            alt=""
+            className="shareProfileImg"
+          />
           <input
             type="text"
             className="hareInput"
