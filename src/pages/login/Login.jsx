@@ -7,7 +7,8 @@ import "./Login.css";
 export const Login = () => {
   const email = useRef();
   const password = useRef();
-  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+
+  const { user, dispatch } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +50,9 @@ export const Login = () => {
               minLength="6"
               ref={password}
             />
-            <button className="loginButton">ログイン</button>
+            <button className="loginButton" type="submit">
+              ログイン
+            </button>
             <span className="loginForgot">パスワードを忘れた方へ</span>
             <button className="loginRegisterButton">アカウント作成</button>
           </form>

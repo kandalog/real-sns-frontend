@@ -1,6 +1,5 @@
 // Reducer関数
-// stateとactionを渡して新しいstateを返すように実装する
-// stateに対して処理を走らせて新しい状態に変更する
+// dispatchで送られたactionに対応するreducerが走る
 
 const AuthReducer = (state, action) => {
   switch (action.type) {

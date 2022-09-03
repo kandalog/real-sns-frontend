@@ -3,7 +3,18 @@ import AuthReducer from "./AuthReducer";
 
 // 最初のユーザー状態を定義
 const initialState = {
-  user: null,
+  // user: null,
+  user: {
+    _id: "63087631c591bf15eff8a0a0",
+    username: "tee",
+    email: "tee@gmail.com",
+    password: "password",
+    profilePicture: "/person/1.jpeg",
+    coverPicture: "",
+    followers: [],
+    followings: [],
+    isAdmin: false,
+  },
   isFetching: false,
   error: false,
 };
@@ -11,10 +22,11 @@ const initialState = {
 // 状態をグローバルに管理する
 export const AuthContext = createContext(initialState);
 
+// contextを返すコンポーネントを作成
 export const AuthContextProvider = ({ children }) => {
-  // 第1 reducer関数  第2初期状態
-  // state→現在の状態  dispatch→どのactionを実行したか
+  // reducerを使う準備
   const [state, dispatch] = useReducer(AuthReducer, initialState);
+
   return (
     <AuthContext.Provider
       value={{

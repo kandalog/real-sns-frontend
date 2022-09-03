@@ -5,19 +5,22 @@ import { Share } from "../share/Share";
 import axios from "axios";
 
 import "./TimeLine.css";
+import { useContext } from "react";
+import { AuthContext } from "../../states/AuthContext";
 
 export const TimeLine = ({ username }) => {
   const [posts, setPosts] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const response = username
-        ? await axios.get(`/posts/profile/${username}`)
-        : await axios.get("/posts/timeline/63087631c591bf15eff8a0a0");
+        ? await axios.get(`/posts/profile/${username}`) // profileの場合
+        : await axios.get(`/posts/timeline/${user._id}`); // ホームの場合
       setPosts(response.data);
     };
     fetchPosts();
-  }, [username]);
+  }, [username, user._id]);
 
   return (
     <div className="timeline">

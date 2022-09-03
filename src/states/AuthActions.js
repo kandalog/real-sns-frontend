@@ -1,4 +1,5 @@
 // ユーザー入力に応じたアクションの設定
+// dispatch()を呼ぶときに引数に渡す
 export const LoginStart = (user) => ({
   type: "LOGIN_START",
 });
