@@ -18,7 +18,6 @@ export const Post = ({ post }) => {
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get(`/users?userId=${post.userId}`);
-      console.log(response);
       setUser(response.data);
     };
     fetchUser();
